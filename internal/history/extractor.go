@@ -52,7 +52,7 @@ func (e *Extractor) Extract(from, to int) ([]Entry, error) {
 	if err != nil {
 		return nil, ErrUnreadableFile
 	}
-	defer file.Close()
+	defer func() { _ = file.Close() }()
 
 	var entries []Entry
 	scanner := bufio.NewScanner(file)

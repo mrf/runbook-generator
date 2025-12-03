@@ -24,8 +24,9 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "runbook-gen",
-	Short: "Generate runbooks from zsh history",
+	Use:     "runbook-gen",
+	Short:   "Generate runbooks from zsh history",
+	Version: version,
 	Long: `Runbook Generator analyzes zsh command history between specified command
 numbers, then produces a structured markdown runbook that others can follow
 to reproduce the same workflow.
@@ -43,6 +44,7 @@ func Execute() error {
 
 func SetVersion(v string) {
 	version = v
+	rootCmd.Version = v
 }
 
 func init() {
@@ -51,8 +53,8 @@ func init() {
 	rootCmd.Flags().StringVarP(&outputFlag, "output", "o", "", "output file path (default: stdout)")
 	rootCmd.Flags().StringVar(&titleFlag, "title", "Runbook", "runbook title")
 
-	rootCmd.MarkFlagRequired("from")
-	rootCmd.MarkFlagRequired("to")
+	_ = rootCmd.MarkFlagRequired("from")
+	_ = rootCmd.MarkFlagRequired("to")
 }
 
 func run(cmd *cobra.Command, args []string) error {
