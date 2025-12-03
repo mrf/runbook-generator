@@ -10,13 +10,13 @@ import (
 
 // RunbookData contains all data needed to generate a runbook.
 type RunbookData struct {
-	Title            string
-	Generated        time.Time
-	TimeRange        string
-	Groups           []processor.CommandGroup
-	RedactedCount    int
-	AIOverview       string   // AI-generated overview (optional)
-	AIPrerequisites  []string // AI-generated prerequisites (optional)
+	Title           string
+	Generated       time.Time
+	TimeRange       string
+	Groups          []processor.CommandGroup
+	RedactedCount   int
+	AIOverview      string   // AI-generated overview (optional)
+	AIPrerequisites []string // AI-generated prerequisites (optional)
 }
 
 // MarkdownGenerator generates markdown runbooks from command groups.

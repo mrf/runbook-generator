@@ -91,7 +91,12 @@ func (s *Sanitizer) sanitizeEntry(entry history.Entry) (*history.Entry, []Redact
 			redactions = append(redactions, Redaction{
 				EntryNumber: entry.Number,
 				PatternName: pattern.Name,
-				Original:    func() string { if s.strictMode { return original }; return "" }(),
+				Original: func() string {
+					if s.strictMode {
+						return original
+					}
+					return ""
+				}(),
 			})
 			command = newCommand
 		}

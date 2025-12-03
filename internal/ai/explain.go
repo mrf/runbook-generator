@@ -12,9 +12,9 @@ import (
 
 // ExplanationResult contains AI-generated explanations for command groups.
 type ExplanationResult struct {
-	Overview     string             `json:"overview"`
+	Overview      string            `json:"overview"`
 	Prerequisites []string          `json:"prerequisites"`
-	Steps        []StepExplanation  `json:"steps"`
+	Steps         []StepExplanation `json:"steps"`
 }
 
 // StepExplanation provides context for a command group.
